@@ -45,7 +45,8 @@ public class MenuView {
             System.out.println("1. Registrar Paciente");
             System.out.println("2. Listar Pacientes");
             System.out.println("3. Remover Pacientes");
-            System.out.println("4. Voltar ao Menu Principal");
+            System.out.println("4. Alterar Dados Pacientes");
+            System.out.println("5. Voltar ao Menu Principal");
             System.out.print("\nEscolha uma opção: ");
             opcao = lerOpcao();
 
@@ -53,10 +54,11 @@ public class MenuView {
                 case 1 -> pacienteController.registrarPaciente(scanner);
                 case 2 -> pacienteController.listarPacientes();
                 case 3 -> pacienteController.removerPaciente(scanner);
-                case 4 -> System.out.println("\nVoltando ao Menu Principal...");
+                case 4 -> pacienteController.alterarDadosPaciente(scanner);
+                case 5 -> System.out.println("\nVoltando ao Menu Principal...");
                 default -> System.out.println("\nOpção inválida. Por favor, tente novamente.");
             }
-        } while (opcao != 4);
+        } while (opcao != 5);
     }
 
 
@@ -67,7 +69,9 @@ public class MenuView {
             System.out.println("1. Registrar Médico");
             System.out.println("2. Listar Médicos");
             System.out.println("3. Remover Médicos");
-            System.out.println("4. Voltar ao Menu Principal");
+            System.out.println("4. Alterar Dados Médicos");
+            System.out.println("5. Ajustar Plano Paciente");
+            System.out.println("6. Voltar ao Menu Principal");
             System.out.print("\nEscolha uma opção: ");
             opcao = lerOpcao();
 
@@ -75,10 +79,12 @@ public class MenuView {
                case 1 -> medicoController.registrarMedico(scanner);
                 case 2 -> medicoController.listarMedicos();
                 case 3 -> medicoController.removerMedico(scanner);
-                case 4 -> System.out.println("\nVoltando ao Menu Principal...");
+                case 4 -> medicoController.alterarDadosMedico(scanner);
+                case 5 -> consultaController.alterarConsulta(scanner, pacienteController.getPacientes(), medicoController.getMedicos());
+                case 6 -> System.out.println("\nVoltando ao Menu Principal...");
                 default -> System.out.println("\nOpção inválida. Por favor, tente novamente.");
             }
-        } while (opcao != 4);
+        } while (opcao != 6);
     }
 
     private void exibirMenuDispositivos() {
@@ -112,7 +118,7 @@ public class MenuView {
             System.out.println("\n----- AGENDAR CONSULTA -----");
             System.out.println("1. Criar Consulta");
             System.out.println("2. Remover Consulta");
-            System.out.println("3. Listar Consultas com Pacientes");
+            System.out.println("3. Listar Consultas");
             System.out.println("4. Voltar ao Menu Principal");
             System.out.print("\nEscolha uma opção: ");
             opcao = lerOpcao();
@@ -120,7 +126,7 @@ public class MenuView {
             switch (opcao) {
                 case 1 -> consultaController.agendarConsulta(scanner, pacienteController.getPacientes(), medicoController.getMedicos());
                 case 2 -> consultaController.removerConsulta(scanner);
-                case 3 -> consultaController.listarConsultasComPacientesEMedicos(pacienteController.getPacientes(), medicoController.getMedicos());
+                case 3 -> consultaController.listarConsultasComPacientesEMedicos(pacienteController.getPacientes(), medicoController.getMedicos(), consultaController.getConsultas());
                 case 4 -> System.out.println("\nVoltando ao Menu Principal...");
                 default -> System.out.println("\nOpção inválida. Por favor, tente novamente.");
             }

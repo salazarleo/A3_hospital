@@ -78,5 +78,50 @@ public class PacienteController {
     }
 
 
+    public void alterarDadosPaciente(Scanner scanner) {
+        System.out.print("Digite o ID do paciente que deseja alterar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        Paciente paciente = buscarPacientePorId(id);
+
+        if (paciente == null) {
+            System.out.println("Paciente não encontrado.");
+            return;
+        }
+
+        System.out.println("Dados atuais do paciente:");
+        System.out.println("Nome: " + paciente.getNome());
+        System.out.println("CPF: " + paciente.getCpf());
+        System.out.println("Idade: " + paciente.getIdade());
+
+        System.out.println("Digite os novos dados. Pressione Enter para manter os dados atuais.");
+
+        System.out.print("Novo nome (atual: " + paciente.getNome() + "): ");
+        String novoNome = scanner.nextLine();
+        if (!novoNome.isBlank()) {
+            paciente.setNome(novoNome);
+        }
+
+        System.out.print("Novo CPF (atual: " + paciente.getCpf() + "): ");
+        String novoCpf = scanner.nextLine();
+        if (!novoCpf.isBlank()) {
+            paciente.setCpf(novoCpf);
+        }
+
+        System.out.print("Nova idade (atual: " + paciente.getIdade() + "): ");
+        String novaIdade = scanner.nextLine();
+        if (!novaIdade.isBlank()) {
+            try {
+                paciente.setIdade(Integer.parseInt(novaIdade));
+            } catch (NumberFormatException e) {
+                System.out.println("Idade inválida. Dados não alterados.");
+            }
+        }
+
+        System.out.println("Dados do paciente atualizados com sucesso.");
+    }
+
+
 
 }

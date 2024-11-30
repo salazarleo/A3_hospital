@@ -86,5 +86,61 @@ public class MedicoController {
     }
 
 
+    public void alterarDadosMedico(Scanner scanner) {
+        System.out.print("Digite o ID do médico que deseja alterar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        Medico medico = buscarMedicoPorId(id);
+
+        if (medico == null) {
+            System.out.println("Médico não encontrado.");
+            return;
+        }
+
+        System.out.println("Dados atuais do médico:");
+        System.out.println("Nome: " + medico.getNome());
+        System.out.println("CRM: " + medico.getCrm());
+        System.out.println("Especialidade: " + medico.getEspecialidade());
+        System.out.println("Email: " + medico.getEmail());
+        System.out.println("Telefone: " + medico.getTelefone());
+
+        System.out.println("Digite os novos dados. Pressione Enter para manter os dados atuais.");
+
+        System.out.print("Novo nome (atual: " + medico.getNome() + "): ");
+        String novoNome = scanner.nextLine();
+        if (!novoNome.isBlank()) {
+            medico.setNome(novoNome);
+        }
+
+        System.out.print("Nova especialidade (atual: " + medico.getEspecialidade() + "): ");
+        String novaEspecialidade = scanner.nextLine();
+        if (!novaEspecialidade.isBlank()) {
+            medico.setEspecialidade(novaEspecialidade);
+        }
+
+        System.out.print("Novo email (atual: " + medico.getEmail() + "): ");
+        String novoEmail = scanner.nextLine();
+        if (!novoEmail.isBlank()) {
+            medico.setEmail(novoEmail);
+        }
+
+        System.out.print("Novo telefone (atual: " + medico.getTelefone() + "): ");
+        String novoTelefone = scanner.nextLine();
+        if (!novoTelefone.isBlank()) {
+            medico.setTelefone(novoTelefone);
+        }
+
+        System.out.println("Dados do médico atualizados com sucesso.");
+    }
+
+    public Medico buscarMedicoPorId(int idMedico) {
+        for (Medico medico : medicos) {
+            if (medico.getId() == idMedico) {
+                return medico;
+            }
+        }
+        return null; // Retorna null se o médico não for encontrado
+    }
 
 }

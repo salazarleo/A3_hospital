@@ -12,11 +12,16 @@ public class ConsultaController {
 
     private final List<Consulta> consultas = new ArrayList<>();
 
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
     public void agendarConsulta(Scanner scanner, List<Paciente> pacientes, List<Medico> medicos) {
         // Solicitar dados da consulta
         System.out.print("Digite a data da consulta: ");
         String data = scanner.nextLine();
-        scanner.nextLine(); //
+
+
         System.out.print("Digite a hora da consulta: ");
         String hora = scanner.nextLine();
 
@@ -95,7 +100,7 @@ public class ConsultaController {
         }
     }
 
-    public void listarConsultasComPacientesEMedicos(List<Paciente> pacientes, List<Medico> medicos) {
+    public void listarConsultasComPacientesEMedicos(List<Paciente> pacientes, List<Medico> medicos, List<Consulta> consultas) {
         if (consultas.isEmpty()) {
             System.out.println("Não há consultas cadastradas.");
         } else {
@@ -104,10 +109,14 @@ public class ConsultaController {
                 Paciente pacienteVinculado = buscarPacientePorId(consulta.getIdPaciente(), pacientes);
                 Medico medicoVinculado = buscarMedicoPorId(consulta.getIdMedico(), medicos);
 
-                // Exibindo as informações da consulta com o paciente e médico
-                System.out.println("ID: " + consulta.getId() + " | Data: " + consulta.getData() +
+                // Exibindo as informações da consulta com o paciente, médico, diagnóstico e prescrição
+                System.out.println("ID: " + consulta.getId() +
+                        " | Data: " + consulta.getData() +
+                        " | Hora: " + consulta.getHora() +
                         " | Paciente: " + (pacienteVinculado != null ? pacienteVinculado.getNome() : "Nenhum") +
-                        " | Médico: " + (medicoVinculado != null ? medicoVinculado.getNome() : "Nenhum"));
+                        " | Médico: " + (medicoVinculado != null ? medicoVinculado.getNome() : "Nenhum") +
+                        " | Diagnóstico: " + consulta.getDiagnostico() +
+                        " | Prescrição: " + consulta.getPrescricaomed());
             }
         }
     }
@@ -129,4 +138,58 @@ public class ConsultaController {
         }
         return null;
     }
+
+
+    public void alterarConsulta(Scanner scanner, List<Paciente> pacientes, List<Medico> medicos) {
+        System.out.print("Digite o ID da consulta que deseja alterar: ");
+        int idConsulta = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        // Buscar consulta pelo ID
+        Consulta consulta = null;
+        for (Consulta c : consultas) {
+            if (c.getId() == idConsulta) {
+                consulta = c;
+                break;
+            }
+        }
+
+        if (consulta == null) {
+            System.out.println("Consulta não encontrada.");
+            return;
+        }
+
+        // Buscar paciente e médico vinculados
+        Paciente pacienteVinculado = buscarPacientePorId(consulta.getIdPaciente(), pacientes);
+        Medico medicoVinculado = buscarMedicoPorId(consulta.getIdMedico(), medicos);
+
+        if (pacienteVinculado == null || medicoVinculado == null) {
+            System.out.println("Consulta inválida: paciente ou médico não encontrados.");
+            return;
+        }
+
+        // Exibir informações atuais da consulta
+        System.out.println("Consulta encontrada:");
+        System.out.println("Paciente: " + pacienteVinculado.getNome());
+        System.out.println("Médico: " + medicoVinculado.getNome());
+        System.out.println("Diagnóstico atual: " + consulta.getDiagnostico());
+        System.out.println("Prescrição atual: " + consulta.getPrescricaomed());
+
+        // Solicitar novos valores
+        System.out.print("Digite o novo diagnóstico (deixe em branco para manter): ");
+        String novoDiagnostico = scanner.nextLine();
+        if (!novoDiagnostico.isBlank()) {
+            consulta.setDiagnostico(novoDiagnostico);
+        }
+
+        System.out.print("Digite a nova prescrição (deixe em branco para manter): ");
+        String novaPrescricao = scanner.nextLine();
+        if (!novaPrescricao.isBlank()) {
+            consulta.setPrescricaomed(novaPrescricao);
+        }
+
+        System.out.println("Consulta atualizada com sucesso!");
+    }
+
+
 }
