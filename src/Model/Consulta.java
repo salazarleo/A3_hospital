@@ -8,7 +8,7 @@ public class Consulta {
     private String diagnostico;
     private String prescricaomed;
     private Integer idPaciente;
-    private int idMedico;
+    private Integer idMedico;
 
     public Consulta(String data, String hora, String diagnostico, String prescricaomed) {
         this.id = ++contadorId;
@@ -16,7 +16,8 @@ public class Consulta {
         this.hora = hora;
         this.diagnostico = diagnostico;
         this.prescricaomed = prescricaomed;
-        this.idPaciente = null; // Inicialmente, sem vínculo
+        this.idPaciente = null;
+        this.idMedico = null; // Inicialmente, sem vínculo
     }
 
     public int getIdMedico() {

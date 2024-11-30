@@ -13,6 +13,11 @@ public class DispositivoController {
 
     private final List<Dispositivo> dispositivos = new ArrayList<>();
 
+
+    public List<Dispositivo> getDispositivos() {
+        return dispositivos;
+    }
+
     public void registrarDispositivo(Scanner scanner) {
         System.out.print("Digite o tipo do dispositivo: ");
         String tipo = scanner.nextLine();

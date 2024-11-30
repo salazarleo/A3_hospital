@@ -1,8 +1,6 @@
 package View;
-import Controller.ConsultaController;
-import Controller.DispositivoController;
-import Controller.MedicoController;
-import Controller.PacienteController;
+
+import Controller.*;
 
 
 import java.util.Scanner;
@@ -13,6 +11,8 @@ public class MenuView {
     private final MedicoController medicoController = new MedicoController();
     private final DispositivoController dispositivoController = new DispositivoController();
     private final ConsultaController consultaController = new ConsultaController();
+    private final MonitoramentoController monitoramentoController = new MonitoramentoController();
+    private final AlertaController alertaController = new AlertaController();
 
 
     public void exibirMenu() {
@@ -23,7 +23,8 @@ public class MenuView {
             System.out.println("2. Menu Médicos");
             System.out.println("3. Menu Dispositivos");
             System.out.println("4. Agendar Consulta");
-            System.out.println("5. Sair");
+            System.out.println("5. Monitoramento");
+            System.out.println("6. Sair");
             System.out.print("\nEscolha uma opção: ");
             opcao = lerOpcao();
 
@@ -32,10 +33,11 @@ public class MenuView {
                 case 2 -> exibirMenuMedicos();
                 case 3 -> exibirMenuDispositivos();
                 case 4 -> agendarConsulta();
-                case 5 -> System.out.println("\nSaindo... Até logo!");
+                case 5 -> monitorar();
+                case 6 -> System.out.println("\nSaindo... Até logo!");
                 default -> System.out.println("\nOpção inválida. Por favor, tente novamente.");
             }
-        } while (opcao != 5);
+        } while (opcao != 6);
     }
 
     private void exibirMenuPacientes() {
@@ -132,6 +134,34 @@ public class MenuView {
             }
         }while (opcao != 4);
     }
+
+
+
+    private void monitorar() {
+        int opcao;
+        do {
+            System.out.println("\n----- MENU MONITORAÇÃO -----");
+            System.out.println("1. Registrar Monitoramento");
+            System.out.println("2. Listar Monitoramentos");
+            System.out.println("3. Gerar Alerta");
+            System.out.println("4. Remover Alertas");
+            System.out.println("5. Listar Alertas");
+            System.out.println("6. Voltar ao Menu Principal");
+            System.out.print("\nEscolha uma opção: ");
+            opcao = lerOpcao();
+
+            switch (opcao) {
+                case 1 -> monitoramentoController.adicionarMonitoramento(scanner, pacienteController.getPacientes(), dispositivoController.getDispositivos());
+                case 2 -> monitoramentoController.listarMonitoramento(pacienteController.getPacientes(), dispositivoController.getDispositivos());
+                case 3 -> alertaController.gerarAlerta(scanner, pacienteController.getPacientes(), medicoController.getMedicos());
+                case 4 -> alertaController.removerAlerta(scanner);
+                case 5 -> alertaController.listarAlertas(pacienteController.getPacientes(), medicoController.getMedicos(), alertaController.getAlertas());
+                case 6 -> System.out.println("\nVoltando ao Menu Principal...");
+                default -> System.out.println("\nOpção inválida. Por favor, tente novamente.");
+            }
+        } while (opcao != 6);
+    }
+
 
 
 
