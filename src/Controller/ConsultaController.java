@@ -18,6 +18,7 @@ public class ConsultaController {
 
     public void agendarConsulta(Scanner scanner, List<Paciente> pacientes, List<Medico> medicos) {
         // Solicitar dados da consulta
+        scanner.nextLine();
         System.out.print("Digite a data da consulta: ");
         String data = scanner.nextLine();
 

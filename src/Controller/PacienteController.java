@@ -25,9 +25,10 @@ public class PacienteController {
 
 
     public void registrarPaciente(Scanner scanner) {
+        scanner.nextLine();
         System.out.print("Digite o CPF do paciente: ");
         String cpf = scanner.nextLine();
-        scanner.nextLine();
+
 
         System.out.print("Digite o nome do paciente: ");
         String nome = scanner.nextLine();
@@ -36,7 +37,7 @@ public class PacienteController {
         int idade = scanner.nextInt();
         scanner.nextLine(); // Limpar o buffer
 
-        Paciente paciente = new Paciente(nome, idade, cpf);
+        Paciente paciente = new Paciente(cpf, nome, idade);
         pacientes.add(paciente);
         System.out.println("Paciente registrado com sucesso!");
     }
@@ -47,7 +48,7 @@ public class PacienteController {
         } else {
             System.out.println("Lista de Pacientes:");
             for (Paciente paciente : pacientes) {
-                System.out.println("ID: "+paciente.getId() +" Nome: " + paciente.getNome() + " | CPF: " + paciente.getCpf());
+                System.out.println("ID: "+paciente.getId() + " | CPF: " + paciente.getCpf() + " Nome: " + paciente.getNome() + " | Idade: " + paciente.getIdade()  );
             }
         }
 

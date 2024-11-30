@@ -29,7 +29,7 @@ public class MedicoController {
 
         System.out.print("Digite a especialidade do medico: ");
         String especialidade = scanner.nextLine();
-        scanner.nextLine(); // Limpar o buffer
+
 
         System.out.print("Digite o email do medico: ");
         String email = scanner.nextLine();
