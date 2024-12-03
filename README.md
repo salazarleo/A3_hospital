@@ -122,6 +122,49 @@ Para rodar o sistema, basta seguir os seguintes passos:
 
 ---
 
+## 📚 **Testes Unitários** 🧑‍💻
 
-**Desenvolvido por**: [Leonardo Salazar]  https://github.com/salazarleo 
+### **Objetivo**
+Os testes unitários garantem que o sistema de gerenciamento de saúde funcione corretamente. Eles validam as funcionalidades principais do sistema, como o cadastro de pacientes, médicos, dispositivos, consultas e alertas.
 
+---
+
+### **Testes Implementados**
+
+#### **PacienteControllerTest** - **Testes do Controlador de Pacientes**
+
+- **Objetivo**: Validar a criação de pacientes e o incremento do ID.
+- **Método `setUp()`**: Reinicia o contador de IDs antes de cada teste.
+- **Testes**:
+  - **`testCriacaoPaciente()`**: Verifica se um paciente é criado corretamente e recebe o ID correto.
+  - **`testContadorIdIncrementado()`**: Testa o incremento do contador de IDs para novos pacientes.
+
+#### **MedicoControllerTest** - **Testes do Controlador de Médicos**
+
+- **Objetivo**: Garantir que os médicos sejam registrados corretamente.
+- **Método `setUp()`**: Cria uma instância do controlador de médicos.
+- **Testes**:
+  - **`testRegistrarMedico()`**: Verifica se os dados do médico são registrados corretamente.
+
+#### **DispositivoControllerTest** - **Testes do Controlador de Dispositivos**
+
+- **Objetivo**: Validar o cadastro e vínculo de dispositivos médicos com pacientes.
+- **Testes**:
+  - **`testRegistrarDispositivo()`**: Verifica se o dispositivo é registrado corretamente.
+  - **`testVincularDispositivoPaciente()`**: Testa o vínculo de dispositivos com pacientes.
+
+#### **ConsultaControllerTest** - **Testes do Controlador de Consultas**
+
+- **Objetivo**: Validar a criação de consultas e o vínculo com médicos e pacientes.
+- **Testes**:
+  - **`testRegistrarConsulta()`**: Verifica se a consulta é registrada corretamente.
+
+#### **AlertaControllerTest** - **Testes do Controlador de Alertas**
+
+- **Objetivo**: Garantir que os alertas sejam gerados corretamente quando detectado um problema.
+- **Testes**:
+  - **`testGerarAlerta()`**: Verifica se um alerta é criado corretamente quando necessário.
+
+---
+
+**Desenvolvido por**: [Leonardo Salazar](https://github.com/salazarleo)
