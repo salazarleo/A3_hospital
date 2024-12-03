@@ -1,7 +1,5 @@
 package Model;
 
-import java.time.LocalDateTime;
-
 public class Alerta {
     private static int contadorId = 0; // Contador estático para IDs únicos
     private final int id;

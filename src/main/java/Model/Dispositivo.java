@@ -10,8 +10,9 @@ public class Dispositivo {
     private String valoresReferencia;
     private Integer idPaciente;
 
+    // Construtor
     public Dispositivo(String tipo, String marca, String modelo, String status, String valoresReferencia) {
-        this.id = ++contadorId;
+        this.id = ++contadorId; // Gera ID único
         this.tipo = tipo;
         this.marca = marca;
         this.modelo = modelo;
@@ -20,22 +21,13 @@ public class Dispositivo {
         this.idPaciente = null; // Inicialmente, sem vínculo
     }
 
-    public Integer getIdPaciente() {
-        return idPaciente;
+    // Método para simular o registro
+    public boolean registrar() {
+        // Simula o sucesso do registro (poderia ser uma operação de banco de dados, por exemplo)
+        return true;
     }
 
-    public void setIdPaciente(Integer idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public static int getContadorId() {
-        return contadorId;
-    }
-
-    public static void setContadorId(int contadorId) {
-        Dispositivo.contadorId = contadorId;
-    }
-
+    // Getters e setters
     public int getId() {
         return id;
     }
@@ -78,5 +70,32 @@ public class Dispositivo {
 
     public void setValoresReferencia(String valoresReferencia) {
         this.valoresReferencia = valoresReferencia;
+    }
+
+    public Integer getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(Integer idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    // Método toString para facilitar a depuração
+    @Override
+    public String toString() {
+        return "Dispositivo{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", status='" + status + '\'' +
+                ", valoresReferencia='" + valoresReferencia + '\'' +
+                ", idPaciente=" + (idPaciente != null ? idPaciente : "Sem vínculo") +
+                '}';
+    }
+
+    // Método estático para permitir reiniciar o contador de IDs, necessário para testes
+    public static void setContadorId(int valor) {
+        contadorId = valor;
     }
 }

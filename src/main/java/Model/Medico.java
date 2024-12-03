@@ -9,6 +9,7 @@ public class Medico {
     private String email;
     private String telefone;
 
+    // Construtor principal com todos os campos
     public Medico(int crm, String nome, String especialidade, String email, String telefone) {
         this.id = ++contadorId;
         this.crm = crm;
@@ -16,6 +17,16 @@ public class Medico {
         this.especialidade = especialidade;
         this.email = email;
         this.telefone = telefone;
+    }
+
+    // Construtor simplificado (caso o CRM não seja necessário em todos os testes)
+    public Medico(String nome, String especialidade) {
+        this.id = ++contadorId;
+        this.nome = nome;
+        this.especialidade = especialidade;
+        this.crm = 0; // CRM não fornecido
+        this.email = "não informado";
+        this.telefone = "não informado";
     }
 
     public static int getContadorId() {
@@ -68,5 +79,11 @@ public class Medico {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    // Método toString() para facilitar a impressão do objeto
+    @Override
+    public String toString() {
+        return "Médico{id=" + id + ", crm=" + crm + ", nome='" + nome + "', especialidade='" + especialidade + "', email='" + email + "', telefone='" + telefone + "'}";
     }
 }

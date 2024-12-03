@@ -2,7 +2,6 @@ package View;
 
 import Controller.*;
 
-
 import java.util.Scanner;
 
 public class MenuView {
@@ -78,7 +77,7 @@ public class MenuView {
             opcao = lerOpcao();
 
             switch (opcao) {
-               case 1 -> medicoController.registrarMedico(scanner);
+                case 1 -> medicoController.registrarMedico(scanner);
                 case 2 -> medicoController.listarMedicos();
                 case 3 -> medicoController.removerMedico(scanner);
                 case 4 -> medicoController.alterarDadosMedico(scanner);
