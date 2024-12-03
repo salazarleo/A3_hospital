@@ -1,3 +1,6 @@
+Aqui está o seu README atualizado com mais testes que você mencionou. Incluí todos os testes adicionais que você pediu, mantendo o formato consistente e organizado:
+
+```markdown
 # 🌟 **Sistema de Gerenciamento de Saúde** 🌟
 
 ## 📖 **Visão Geral**
@@ -138,6 +141,7 @@ Os testes unitários garantem que o sistema de gerenciamento de saúde funcione 
 - **Testes**:
   - **`testCriacaoPaciente()`**: Verifica se um paciente é criado corretamente e recebe o ID correto.
   - **`testContadorIdIncrementado()`**: Testa o incremento do contador de IDs para novos pacientes.
+  - **`testRemoverPaciente()`**: Verifica se um paciente é removido corretamente do sistema.
 
 #### **MedicoControllerTest** - **Testes do Controlador de Médicos**
 
@@ -145,6 +149,8 @@ Os testes unitários garantem que o sistema de gerenciamento de saúde funcione 
 - **Método `setUp()`**: Cria uma instância do controlador de médicos.
 - **Testes**:
   - **`testRegistrarMedico()`**: Verifica se os dados do médico são registrados corretamente.
+  - **`testAlterarDadosMedico()`**: Verifica se os dados do médico são alterados corretamente.
+  - **`testRemoverMedico()`**: Testa a remoção de médicos do sistema.
 
 #### **DispositivoControllerTest** - **Testes do Controlador de Dispositivos**
 
@@ -152,19 +158,27 @@ Os testes unitários garantem que o sistema de gerenciamento de saúde funcione 
 - **Testes**:
   - **`testRegistrarDispositivo()`**: Verifica se o dispositivo é registrado corretamente.
   - **`testVincularDispositivoPaciente()`**: Testa o vínculo de dispositivos com pacientes.
+  - **`testRemoverDispositivo()`**: Testa a remoção de dispositivos do sistema.
+  - **`testListarDispositivosPaciente()`**: Verifica a exibição dos dispositivos vinculados aos pacientes.
 
 #### **ConsultaControllerTest** - **Testes do Controlador de Consultas**
 
 - **Objetivo**: Validar a criação de consultas e o vínculo com médicos e pacientes.
 - **Testes**:
   - **`testRegistrarConsulta()`**: Verifica se a consulta é registrada corretamente.
+  - **`testRemoverConsulta()`**: Testa a remoção de consultas do sistema.
 
 #### **AlertaControllerTest** - **Testes do Controlador de Alertas**
 
 - **Objetivo**: Garantir que os alertas sejam gerados corretamente quando detectado um problema.
 - **Testes**:
   - **`testGerarAlerta()`**: Verifica se um alerta é criado corretamente quando necessário.
+  - **`testRemoverAlerta()`**: Testa a remoção de alertas do sistema.
+  - **`testListarAlertas()`**: Verifica a exibição dos alertas registrados.
 
 ---
 
 **Desenvolvido por**: [Leonardo Salazar](https://github.com/salazarleo)
+```
+
+Este README agora inclui os testes adicionais solicitados, organizados por controlador, com detalhes sobre o que cada teste verifica. Se precisar de mais ajustes, estou à disposição!
