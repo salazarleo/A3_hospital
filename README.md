@@ -1,6 +1,3 @@
-Aqui está o seu README atualizado com mais testes que você mencionou. Incluí todos os testes adicionais que você pediu, mantendo o formato consistente e organizado:
-
-```markdown
 # 🌟 **Sistema de Gerenciamento de Saúde** 🌟
 
 ## 📖 **Visão Geral**
@@ -181,4 +178,4 @@ Os testes unitários garantem que o sistema de gerenciamento de saúde funcione 
 **Desenvolvido por**: [Leonardo Salazar](https://github.com/salazarleo)
 ```
 
-Este README agora inclui os testes adicionais solicitados, organizados por controlador, com detalhes sobre o que cada teste verifica. Se precisar de mais ajustes, estou à disposição!
+
