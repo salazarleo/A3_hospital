@@ -88,7 +88,7 @@ Para rodar o sistema, basta seguir os seguintes passos:
 1. **Clonar o Repositório**:  
    Clone este repositório para sua máquina local utilizando o comando:
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   https://github.com/salazarleo/A3_hospital
    ```
 
 2. **Compilar e Executar**:  
